@@ -1,10 +1,9 @@
 require 'test_helper'
 
-module Dhl::Bcs::V2
+module Dhl::Bcs::V3
   class ReceiverTest < Minitest::Test
-
     def setup
-      Dhl::Bcs.version = 'v2'
+      Dhl::Bcs.version = 'v3'
     end
 
     def test_build_receiver
