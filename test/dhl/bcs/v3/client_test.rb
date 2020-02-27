@@ -1,10 +1,10 @@
 require 'test_helper'
 
-module Dhl::Bcs::V2
+module Dhl::Bcs::V3
   class BusinessCustomerShippingTest < Minitest::Test
 
     def setup
-      Dhl::Bcs.version = 'v2'
+      Dhl::Bcs.version = 'v3'
       config = { user: '2222222222_01', signature: 'pass', ekp: '2222222222', participation_number: '01', api_user: 'test', api_pwd: 'test' }
       options = { test: true, log: false }
       @client = Dhl::Bcs.client(config, **options)
@@ -367,11 +367,11 @@ module Dhl::Bcs::V2
     end
 
     def stub_and_check(method: :post, url: 'https://cig.dhl.de/services/sandbox/soap', file_prefix: '')
-      stub_request(method, url).to_return(status: 200, body: File.read("test/stubs/v2/#{file_prefix}_response.xml"))
+      stub_request(method, url).to_return(status: 200, body: File.read("test/stubs/v3/#{file_prefix}_response.xml"))
 
       # use Nokogiri to remove all whitespaces between the xml tags
       request_xml =
-        Nokogiri::XML.parse(File.read("test/stubs/v2/#{file_prefix}_request.xml"), &:noblanks).
+        Nokogiri::XML.parse(File.read("test/stubs/v3/#{file_prefix}_request.xml"), &:noblanks).
         to_xml(save_with: Nokogiri::XML::Node::SaveOptions::AS_XML).sub("\n", '').strip
 
       yield

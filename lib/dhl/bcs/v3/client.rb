@@ -2,10 +2,10 @@ require 'savon'
 require 'stringio'
 require 'logger'
 
-module Dhl::Bcs::V2
+module Dhl::Bcs::V3
   class Client
 
-    WSDL = 'https://cig.dhl.de/cig-wsdls/com/dpdhl/wsdl/geschaeftskundenversand-api/2.0/geschaeftskundenversand-api-2.0.wsdl'
+    WSDL = 'https://cig.dhl.de/cig-wsdls/com/dpdhl/wsdl/geschaeftskundenversand-api/3.0/geschaeftskundenversand-api-3.0.wsdl'
 
     def initialize(config, log: true, test: false, **options)
       raise "User must be specified" if config[:user].nil?
@@ -49,7 +49,7 @@ module Dhl::Bcs::V2
     end
 
     def create_shipment_order(*shipments, **options)
-      request(:create_shipment_order, build_shipment_orders(shipments, **options)) do |response|
+      request(:create_shipment_order, **build_shipment_orders(shipments, **options)) do |response|
         [response.body[:create_shipment_order_response][:creation_state]].flatten.map do |creation_state|
           creation_state[:label_data]
         end
@@ -99,7 +99,7 @@ module Dhl::Bcs::V2
 
     def client_with_local_wsdl(config)
       Savon.client(base_client_options(config)) do
-        wsdl File.expand_path('wsdl/geschaeftskundenversand-api-2.0.wsdl', File.dirname(__FILE__))
+        wsdl File.expand_path('wsdl/geschaeftskundenversand-api-3.0.wsdl', File.dirname(__FILE__))
       end
     end
 

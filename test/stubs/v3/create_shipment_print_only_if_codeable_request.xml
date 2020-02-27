@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<env:Envelope xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bcs="http://dhl.de/webservices/businesscustomershipping" xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cis="http://dhl.de/webservice/cisbase">
+<env:Envelope xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bcs="http://dhl.de/webservices/businesscustomershipping/3.0" xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:cis="http://dhl.de/webservice/cisbase" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
   <env:Header>
     <cis:Authentification>
       <cis:user>2222222222_01</cis:user>
@@ -27,7 +27,7 @@
           <Shipper>
             <Name>
               <cis:name1>Christoph Wagner</cis:name1>
-              <cis:name2>webit! Gesellschaft für neue Medien mbH</cis:name2>
+              <cis:name2>webit!</cis:name2>
             </Name>
             <Address>
               <cis:streetName>Schandauer Straße</cis:streetName>
@@ -43,16 +43,15 @@
             </Communication>
           </Shipper>
           <Receiver>
-            <cis:name1>John Doe</cis:name1>
+            <cis:name1>Jane Doe</cis:name1>
             <Communication>
-              <cis:email>john.doe@example.com</cis:email>
+              <cis:email>jane.doe@example.com</cis:email>
             </Communication>
             <Address>
-              <cis:streetName>Mainstreet</cis:streetName>
-              <cis:streetNumber>10</cis:streetNumber>
-              <cis:addressAddition>Appartment 2a</cis:addressAddition>
-              <cis:zip>90210</cis:zip>
-              <cis:city>Springfield</cis:city>
+              <cis:streetName>Willy-Brandt-Straße</cis:streetName>
+              <cis:streetNumber>1</cis:streetNumber>
+              <cis:zip>10557</cis:zip>
+              <cis:city>Berlin</cis:city>
               <cis:Origin>
                 <cis:countryISOCode>DE</cis:countryISOCode>
               </cis:Origin>

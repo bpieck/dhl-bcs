@@ -6,6 +6,15 @@ class Dhl::BcsTest < Minitest::Test
   end
 
   def test_initialize_new_client
+    Dhl::Bcs.version = 'v3'
+    config = { user: 'user', signature: 'signature', ekp: 'ekp12345', participation_number: '01', api_user: 'test', api_pwd: 'test' }
+    options = { test: true, log: true }
+    client = Dhl::Bcs.client(config, **options)
+    assert_equal Dhl::Bcs::V3::Client, client.class
+  end
+
+  def test_initialize_new_v2_client
+    Dhl::Bcs.version = 'v2'
     config = { user: 'user', signature: 'signature', ekp: 'ekp12345', participation_number: '01', api_user: 'test', api_pwd: 'test' }
     options = { test: true, log: true }
     client = Dhl::Bcs.client(config, **options)
@@ -13,6 +22,7 @@ class Dhl::BcsTest < Minitest::Test
   end
 
   def test_build_shipper
+    Dhl::Bcs.version = 'v2'
     shipper = Dhl::Bcs.build_shipper(
       name: 'Christoph Wagner',
       company: 'webit! Gesellschaft für neue Medien mbH',
