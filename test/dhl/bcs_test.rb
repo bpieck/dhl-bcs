@@ -17,7 +17,7 @@ class Dhl::BcsTest < Minitest::Test
     Dhl::Bcs.version = 'v2'
     config = { user: 'user', signature: 'signature', ekp: 'ekp12345', participation_number: '01', api_user: 'test', api_pwd: 'test' }
     options = { test: true, log: true }
-    client = Dhl::Bcs.client(config, options)
+    client = Dhl::Bcs.client(config, **options)
     assert_equal Dhl::Bcs::V2::Client, client.class
   end
 
